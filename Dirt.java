@@ -14,6 +14,12 @@ public class Dirt extends blocs
      */
     public void act()
     {
-        // Add your action code here.
+        // smoothing algorithm
+        /* getNeighbours​(int distance, boolean diagonal, java.lang.Class<A> cls)
+        int neighbours = (getNeighbours(20, true, null)).size();
+        if(neighbours < 2){
+            MyWorld world = (MyWorld) getWorld();
+            world.removeObject(this);
+        }*/
     }
 }
