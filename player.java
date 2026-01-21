@@ -6,32 +6,25 @@ public class player extends Actor
     
     public void act()
     {
-        // moveset:
-        if(Greenfoot.isKeyDown("a")){
-            setRotation(-3);
-            move(-2);
-        }
-        if(Greenfoot.isKeyDown("d")){
-            setRotation(3);
-            move(2);
-        }
-        
         // collision:
-
-        // getObjectsAtOffset​(int dx, int dy, java.lang.Class<A> cls)
-        if((getObjectsAtOffset(0, 20, null).size()) >= 1){
+	// each second pass dir as `d` for gravity.
+	// use a basic moveset to determine dir for `l` and `r`
+	// additionally use `space` to indicate `u`
+	
+	if(greenfoot.isKeyDown("right")){
+		MoveWithCollision("r");
+	}
+	
+	
             
-            
-        }
-            
-        //}
     }
     
     
-    public void collision(String dir){
+    public void MoveWithCollision(String dir){
         // dir as l/r/u/d
         // 1- get dir as offset val (x/y)
-        // 2- reduce moveset
+        // 2- offer reduced moveset
+	// 3- gravity. (lore accurate)
         
         //1:
         int offset = 0;
@@ -49,13 +42,30 @@ public class player extends Actor
                 offset = 20;
                 break;
             default:
-                offset = 0;
+                offset = 20;
             }
         
         //2:
-        
-            
-            
+		 // if there is object to adjecent to attempted move:
+		 // then block move in that direction 
+	int obstacles = getObjectsAtOffset(0, offset, null).size();
+
+	// moveset:
+	
+	public void go(int rq, int obstacles){
+		// where rq is integer 0/1 for query is moving right
+		
+		if(obstacles = 0){
+			if(rq == 1){
+				move(1);
+			} else{
+				move(-1);
+			}
+		}
         }
+
+	go(1, obstaces);
+
+
     }
 

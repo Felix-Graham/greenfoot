@@ -33,12 +33,14 @@ public class MyWorld extends World
          // for y+
         int xpos = 0;
         int ypos = 389;
-        for(int w=0;w<601;w=w+22){ 
-            Dirt dirt = new Dirt();
-            addObject(dirt, xpos, ypos);
-            xpos += 22;
-            ypos -= 20;
-        }
+	for(int v=389; v>329; v=v-20){
+		for(int w=0;w<601;w=w+22){ 
+		    Dirt dirt = new Dirt();
+		    addObject(dirt, w, v);
+		    xpos += 22;
+		    //ypos -= 20;
+		}
+	}
          
          
         }
