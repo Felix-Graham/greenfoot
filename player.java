@@ -21,12 +21,36 @@ public class player extends Actor
         }
     }
     
+    public int collideLeft(){
+        if(getObjectsAtOffset(-20, 0, null).size() == 0){
+            return 1;
+        } else{
+            return -1;
+        }
+    }
+    
+    public int collideRight(){
+        if(getObjectsAtOffset(20, 0, null).size() == 0){
+            return 1;
+        } else{
+            return -1;
+        }
+    }
+    
+    public int collideUp(){
+        if(getObjectsAtOffset(0, -20, null).size() == 0){
+            return 1;
+        } else{
+            return -1;
+        }
+    }
+    
     public void moveset(){
-        if(Greenfoot.isKeyDown("d")){
+        if(Greenfoot.isKeyDown("d") && collideRight() == 1){
             move(1);
-        } else if(Greenfoot.isKeyDown("a")){
+        } else if(Greenfoot.isKeyDown("a") && collideLeft() == 1){
             move(-1);
-        } else if(Greenfoot.isKeyDown("space")){
+        } if(Greenfoot.isKeyDown("space") && collideUp() == 1){
             setLocation(getX(), (getY()-2));
         }
     }
@@ -41,12 +65,24 @@ public class player extends Actor
         }
     }
     
+    public void place(){
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(mouse != null && mouse.getButton() == 3){
+            Dirt dirt = new Dirt();
+            MyWorld world = (MyWorld) getWorld();
+            world.addObject(dirt, mouse.getX(), mouse.getY());
+            
+    }
+}
+   
+    
     public void act(){
         if(collideDown() == 1){
             gravity();
         }
         moveset();
         mine();
+        place();
     }}
     
     
