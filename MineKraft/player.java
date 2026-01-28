@@ -50,8 +50,8 @@ public class player extends Actor
             move(1);
         } else if(Greenfoot.isKeyDown("a") && collideLeft() == 1){
             move(-1);
-        } if(Greenfoot.isKeyDown("space") && collideUp() == 1){
-            setLocation(getX(), (getY()-2));
+	} if(Greenfoot.isKeyDown("space") && collideUp() == 1 && getObjectsAtOffset(0, 20, null).size() == 1){ // and player is on ground.
+            setLocation(getX(), (getY()-100));
         }
     }
     
