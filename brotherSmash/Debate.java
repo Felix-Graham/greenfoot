@@ -15,5 +15,12 @@ public class Debate extends Kirk
     public void act()
     {
         // Add your action code here.
+	home();
+    }
+
+    public void home(){
+	// Enemy enemy = getWorld().getObjects(Enemy.class).get(0);
+	// enemy.getX(); and so on
+    	// get player location and aim towards
     }
 }
